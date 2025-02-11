@@ -1,5 +1,7 @@
 @import url("reset.css");
 @import url("variables.css");
+@import url("/styles/components/sections/presentation.css");
+@import url("/styles/components/cards/product-card.css");
 
 /* * {
     outline: 1px solid red !important;
@@ -404,143 +406,6 @@ footer {
     grid-row: 4;
 }
 
-/* Product presentation */
-.presentation {
-    display: grid;
-    grid-template-columns: repeat(1, auto);
-    grid-template-rows: repeat(10, auto);
-    grid-template-areas:
-        'presentation-heading'
-        'presentation-heading-bergen'
-        'presentation-image-bergen'
-        'presentation-info-bergen'
-        'presentation-heading-trondheim'
-        'presentation-image-trondheim'
-        'presentation-info-trondheim'
-        'presentation-heading-tromso'
-        'presentation-image-tromso'
-        'presentation-info-tromso';
-    margin: var(--margin-medium);
-    color: var(--color-darkblue);
-}
-
-.presentation h3 {
-    font-size: var(--heading-xsmall);
-    color: var(--color-darkgreen);
-    margin-top: var(--margin-small);
-    margin-bottom: var(--margin-small);
-}
-
-.presentation__heading {
-    grid-area: presentation-heading;
-    margin: var(--margin-small) 0;
-}
-
-.presentation__info {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: repeat(4, auto);
-    align-items: center;
-    row-gap: 0.5em;
-    column-gap: 1em;
-    padding-bottom: var(--padding-medium);
-    margin-bottom: var(--margin-medium);
-    border-top: 1px solid var(--color-darkblue);
-    border-bottom: 1px solid var(--color-darkblue);
-    color: var(--color-black);
-}
-
-.presentation__image {
-    border-radius: 7px;
-    max-width: 100%;
-}
-
-.presentation__heading--bergen {
-    grid-area: presentation-heading-bergen;
-    border-top: 1px solid var(--color-darkblue);
-}
-
-.presentation__image--bergen {
-    grid-area: presentation-image-bergen;
-    max-height: fit-content;
-}
-
-.presentation__heading--bergen {
-    grid-area: presentation-heading-bergen;
-}
-
-.presentation__info--bergen {
-    grid-area: presentation-info-bergen;
-}
-
-.presentation__heading--trondheim {
-    grid-area: presentation-heading-trondheim;
-}
-
-.presentation__image--trondheim {
-    grid-area: presentation-image-trondheim;
-}
-
-.presentation__heading--trondheim {
-    grid-area: presentation-heading-trondheim;
-}
-
-.presentation__info--trondheim {
-    grid-area: presentation-info-trondheim;
-}
-
-.presentation__heading--tromso {
-    grid-area: presentation-heading-tromso;
-}
-
-.presentation__image--tromso {
-    grid-area: presentation-image-tromso;
-}
-
-.presentation__heading--tromso {
-    grid-area: presentation-heading-tromso;
-}
-
-.presentation__info--tromso {
-    grid-area: presentation-info-tromso;
-}
-
-.info__text {
-    grid-column: 1 /span 2;
-}
-
-.info__icon--drop {
-    grid-column: 1;
-    grid-row: 2;
-    justify-self: center;
-}
-
-.info__value--waterproof {
-    grid-column: 2;
-    grid-row: 2
-}
-
-.info__icon--temp {
-    grid-column: 1;
-    grid-row: 3;
-    justify-self: center;
-}
-
-.info__value--temp {
-    grid-column: 2;
-    grid-row: 3;
-}
-
-.info__icon--weight {
-    grid-column: 1;
-    grid-row: 4;
-    justify-self: center;
-}
-
-.info__value--weight {
-    grid-column: 2;
-    grid-row: 4;
-}
 
 /* Our users */
 .our-users {
@@ -1348,39 +1213,6 @@ textarea:focus {
         grid-column: 4;
     }
 
-    /* Product presentation (min-width: 600px;) */
-    .presentation {
-        display: grid;
-        grid-template-columns: repeat(2, auto);
-        grid-template-rows: repeat(8, auto);
-        column-gap: 2em;
-        grid-template-areas:
-            'presentation-heading presentation-heading'
-            'presentation-heading-bergen presentation-heading-bergen'
-            'presentation-image-bergen  presentation-info-bergen'
-            'presentation-heading-trondheim presentation-heading-trondheim'
-            'presentation-image-trondheim presentation-info-trondheim'
-            'presentation-heading-tromso presentation-heading-tromso'
-            'presentation-image-tromso presentation-info-tromso';
-        border-bottom: 1px solid var(--color-darkblue);
-    }
-
-    .presentation__link {
-        display: flex;
-        max-width: 20vw;
-        margin-bottom: var(--margin-xsmall);
-    }
-
-    .presentation__info {
-        border: none;
-        align-self: center;
-        padding: 0;
-    }
-
-    .presentation__heading--trondheim,
-    .presentation__heading--tromso {
-        border-top: 1px solid var(--color-darkblue);
-    }
 
     /* Our users */
     .our-users {
