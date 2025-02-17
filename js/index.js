@@ -2,7 +2,7 @@ const API_URL = "https://v2.api.noroff.dev/rainy-days";
 
 async function fetchProducts(url) {
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(url);
         if (!response.ok) { throw new Error('Could not fetch products ' + response.statusText); }
         const json = await response.json();
         const products = json.data;
@@ -16,6 +16,10 @@ async function fetchProducts(url) {
 function createProductCardSmall(product) {
     const productCard = document.createElement('div');
     productCard.classList.add('product-card', 'product-card--small');
+
+    productCard.addEventListener("click", function () {
+        window.location.href = `../html/productpage.html?id=${product.id}`
+    });
 
     const cardImage = document.createElement('img');
     cardImage.classList.add('product-card__image');
@@ -52,3 +56,8 @@ function displayProducts(products) {
 }
 
 fetchProducts(API_URL);
+
+
+
+
+

@@ -2,7 +2,7 @@
 @import url("variables.css");
 @import url("components/sections/presentation.css");
 @import url("components/cards/product-card.css");
-
+@import url("components/sections/productpage.css");
 /* * {
     outline: 1px solid red !important;
 } */
@@ -239,6 +239,8 @@ header a:hover {
     max-height: 3vh;
     margin-bottom: var(--margin-xsmall);
     padding-right: var(--padding-xsmall);
+    padding-left: var(--padding-small);
+
     grid-area: breadcrumbs;
 }
 
@@ -491,97 +493,6 @@ footer {
     width: 100%;
 }
 
-
-/* Product page: Bergen */
-.product-page {
-    display: grid;
-}
-
-.product-page__product {
-    margin: var(--margin-medium);
-    display: grid;
-    grid-template-rows: repeat(7, auto);
-    grid-template-columns: 1fr 1fr;
-    column-gap: 1em;
-    row-gap: 1em;
-    grid-auto-rows: auto;
-    grid-auto-columns: auto;
-}
-
-
-.product-page__product__h1 {
-    padding: var(--padding-xsmall);
-    grid-column: 1;
-    grid-row: 1;
-}
-
-
-.product-page__product__image {
-    grid-column: 1 / span 2;
-    grid-row: 2;
-    width: 60%;
-    justify-self: center;
-}
-
-
-.product-page__product__color-selector {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    align-content: center;
-    gap: 1vw;
-    grid-column: 1 / span 2;
-    grid-row: 3;
-}
-
-.product-page__product__color-selector a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.product-page__product__color {
-    width: 60%;
-
-}
-
-.product-page__product__size-selector {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1vw;
-    align-content: center;
-    text-align: center;
-    font: var(--font-body);
-    font-weight: bold;
-    grid-column: 1 / span 2;
-    grid-row: 4;
-}
-
-.product-page__product__size-selector>* {
-    padding: var(--padding-xsmall);
-    border: 2px solid var(--color-darkgreen);
-    border-radius: 5px;
-    color: var(--color-black);
-
-}
-
-.product-page__product__p {
-    grid-column: 1 / span 2;
-    grid-row: 5;
-}
-
-.product-page__product__price {
-    grid-column: 2;
-    grid-row: 6;
-    justify-self: end;
-}
-
-.product-page__product__cta {
-    grid-column: 1 /span 2;
-    grid-row: 7;
-    align-self: center;
-    justify-self: center;
-}
 
 /* About page*/
 .about {
@@ -1134,15 +1045,6 @@ textarea:focus {
         gap: 1.5em;
     }
 
-    /* Product page: Bergen */
-    .product-page__product__color-selector {
-        gap: 3vw;
-    }
-
-    .product-page__product__color {
-        width: 50%;
-
-    }
 }
 
 @media (min-width: 600px) {
@@ -1249,77 +1151,6 @@ textarea:focus {
         margin-top: var(--margin-small)
     }
 
-    /* Product page: Bergen */
-    .product-page__product {
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-        margin: var(--margin-large) 0 var(--margin-large) 0;
-        padding: var(--padding-medium) 0 var(--padding-medium) 0;
-    }
-
-    .product-page__product__h1 {
-        grid-column: 2;
-        grid-row: 1;
-        padding: 0;
-        align-self: end;
-    }
-
-    .product-page__product__p {
-        grid-column: 2;
-        grid-row: 2;
-        margin: 0;
-    }
-
-    .product-page__product__image {
-        grid-column: 1;
-        grid-row: 2 / span 6;
-        width: 100%;
-    }
-
-    .product-page__product__price {
-        grid-column: 2;
-        grid-row: 5;
-        justify-self: end;
-    }
-
-    .product-page__product__color-selector {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        align-content: center;
-        gap: 1vw;
-        grid-column: 2;
-        grid-row: 3;
-    }
-
-    .product-page__product__color {
-        width: 60%;
-    }
-
-    .product-page__product__size-selector {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1vw;
-        align-content: center;
-        text-align: center;
-        font: var(--font-body);
-        font-weight: bold;
-        grid-column: 2;
-        grid-row: 4;
-    }
-
-    .product-page__product__size-selector>* {
-        padding: var(--padding-xsmall);
-        border: 2px solid var(--color-darkgreen);
-        border-radius: 5px;
-        color: var(--color-black);
-    }
-
-    .product-page__product__cta {
-        grid-column: 2;
-        grid-row: 6;
-        align-self: center;
-        justify-self: center;
-    }
 
     /* Shopping cart 600px */
     .cart {
@@ -1691,20 +1522,7 @@ textarea:focus {
         grid-row: 3;
     }
 
-    /* Product page: Bergen */
-    .product-page {
-        max-width: 1000px;
-        margin: auto;
-    }
 
-    .product-page__product {
-        column-gap: 3em;
-    }
-
-    .product-page__product__cta {
-        align-self: end;
-        justify-self: end;
-    }
 
     /* Product category page: Jackets */
     .jackets__selection>* {
