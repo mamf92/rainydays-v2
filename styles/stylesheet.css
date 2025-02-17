@@ -1,7 +1,7 @@
 @import url("reset.css");
 @import url("variables.css");
-@import url("/styles/components/sections/presentation.css");
-@import url("/styles/components/cards/product-card.css");
+@import url("components/sections/presentation.css");
+@import url("components/cards/product-card.css");
 
 /* * {
     outline: 1px solid red !important;
