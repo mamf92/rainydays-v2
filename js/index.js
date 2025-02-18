@@ -1,13 +1,16 @@
 const API_URL = "https://v2.api.noroff.dev/rainy-days";
 
+let allProducts = [];
+
 async function fetchProducts(url) {
     try {
         const response = await fetch(url);
         if (!response.ok) { throw new Error('Could not fetch products ' + response.statusText); }
         const json = await response.json();
-        const products = json.data;
+        allProducts = json.data;
+        console.log(allProducts);
 
-        displayProducts(products);
+        displayProducts(allProducts);
     } catch (error) {
         console.error('Fetch error:', error.message);
     }
@@ -47,12 +50,52 @@ function createProductCardSmall(product) {
 }
 
 function displayProducts(products) {
-    const presentationSection = document.querySelector(".presentation");
+    const presentationSection = document.querySelector(".presentation__products");
+    presentationSection.innerHTML = "";
+
+    const sortButtons = document.createElement("div");
+    sortButtons.classList.add("presentation__sort-buttons");
+
+    const sortByPriceButton = document.createElement('button');
+    sortByPriceButton.addEventListener("click", sortByPrice);
+    sortByPriceButton.classList.add("cta-btn", "presentation__sort-button");
+    sortByPriceButton.textContent = "Sort by price";
+
+    const filterMaleProducts = document.createElement('button');
+    filterMaleProducts.addEventListener("click", filterMaleItems);
+    filterMaleProducts.classList.add("cta-btn", "presentation__sort-button");
+    filterMaleProducts.textContent = "Men's products";
+
+    const filterFemaleProducts = document.createElement('button');
+    filterFemaleProducts.addEventListener("click", filterFemaleItems);
+    filterFemaleProducts.classList.add("cta-btn", "presentation__sort-button");
+    filterFemaleProducts.textContent = "Women's products";
+
+    presentationSection.appendChild(sortButtons);
+    sortButtons.appendChild(sortByPriceButton);
+    sortButtons.appendChild(filterMaleProducts);
+    sortButtons.appendChild(filterFemaleProducts);
 
     products.forEach(product => {
         const productCard = createProductCardSmall(product);
         presentationSection.appendChild(productCard);
     })
+}
+
+function sortByPrice() {
+    const sortedProducts = allProducts.sort((a, b) => a.price - b.price);
+    console.log(sortedProducts);
+    displayProducts(sortedProducts);
+}
+
+function filterMaleItems() {
+    const filteredMaleProducts = allProducts.filter(item => item.gender === "Male");
+    displayProducts(filteredMaleProducts);
+}
+
+function filterFemaleItems() {
+    const filteredFemaleProducts = allProducts.filter(item => item.gender === "Female");
+    displayProducts(filteredFemaleProducts);
 }
 
 fetchProducts(API_URL);

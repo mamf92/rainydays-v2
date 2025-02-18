@@ -1,4 +1,4 @@
-.presentation {
+.presentation__products {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
@@ -10,9 +10,19 @@
     flex: 1 1 100%;
 }
 
+.presentation__sort-buttons {
+    display: flex;
+    grid-column: 1 / -1;
+}
+
+.cta-btn.presentation__sort-button {
+    font-size: var(--body-small);
+    padding: var(--padding-small);
+    align-items: center;
+}
 
 @media (min-width: 768px) {
-    .presentation {
+    .presentation__products {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
@@ -25,7 +35,7 @@
 }
 
 @media (min-width: 1024px) {
-    .presentation {
+    .presentation__products {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
