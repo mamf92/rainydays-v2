@@ -1,0 +1,98 @@
+/* Product category page: Jackets */
+.main-content__jackets__header {
+    min-height: 40vh;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 50%), url(../../../assets/images/people/man-with-orange-jacket-image-by-freepik.jpg);
+    background-size: 100% auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 60% 10%;
+}
+
+.main-content__jackets__heading {
+    color: var(--color-white);
+    padding-left: var(--padding-small);
+}
+
+.main-content__jackets__text {
+    color: var(--color-white);
+    margin: var(--margin-medium);
+    width: 40%;
+}
+
+.jackets__selection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 8px;
+}
+
+.jackets__selection h2 {
+    flex: 1 1 100%;
+    margin: var(--margin-medium) auto;
+}
+
+.jackets__sort-buttons {
+    display: flex;
+    flex: 1 1 100%;
+    justify-content: center;
+}
+
+.jackets__selection>* {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.jackets__selection-devider {
+    flex: 1 1 100%;
+    border-bottom: 1px solid var(--devider-color);
+    padding: var(--padding-medium) 0;
+}
+
+
+/* Media queries */
+@media (min-width: 768px) {
+
+    .jackets__selection__product {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .jackets__sort-buttons {
+        grid-column: 1 / -1;
+    }
+
+
+}
+
+@media (min-width: 1024px) {
+    .jackets__selection>* {
+        max-width: 1024px;
+        margin: auto;
+    }
+
+    .main-content__jackets__header {
+        display: grid;
+        grid-template-columns: auto 1000px auto;
+        grid-template-rows: auto auto 1fr;
+        min-height: 50vh;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 50%), url(../../../assets/images/people/man-with-orange-jacket-image-by-freepik-large.webp);
+    }
+
+    .main-content__jackets__heading,
+    .main-content__jackets__text {
+        padding: var(--padding-small);
+        padding-left: 0;
+        margin: 0;
+        grid-column: 2;
+    }
+
+    .jackets__selection__product {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+
+}

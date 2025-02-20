@@ -3,6 +3,7 @@
 @import url("components/sections/presentation.css");
 @import url("components/cards/product-card.css");
 @import url("components/sections/productpage.css");
+@import url("components/sections/jacketspage.css");
 /* * {
     outline: 1px solid red !important;
 } */
@@ -48,7 +49,6 @@ body {
     z-index: 100;
     clip: auto;
 }
-
 
 /* Text, links, and modifiers */
 h1,
@@ -455,43 +455,6 @@ footer {
     margin-top: var(--margin-xsmall);
 }
 
-/* Product category page: Jackets */
-.main-content__jackets__header {
-    min-height: 40vh;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 50%), url(../assets/images/people/man-with-orange-jacket-image-by-freepik.jpg);
-    background-size: 100% auto;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: 60% 10%;
-}
-
-.main-content__jackets__heading {
-    color: var(--color-white);
-    padding-left: var(--padding-small);
-}
-
-.main-content__jackets__text {
-    color: var(--color-white);
-    margin: var(--margin-medium);
-    width: 40%;
-}
-
-.jackets__selection {
-    margin: var(--margin-medium);
-}
-
-.jackets__selection>* {
-    display: flex;
-    gap: 1em;
-}
-
-.product-trondheim {
-    margin-top: var(--margin-xsmall)
-}
-
-.jackets__selection__product__image {
-    width: 100%;
-}
 
 
 /* About page*/
@@ -1040,11 +1003,6 @@ textarea:focus {
         grid-column: 3;
     }
 
-    /* Product category page: Jackets */
-    .jackets__selection>* {
-        gap: 1.5em;
-    }
-
 }
 
 @media (min-width: 600px) {
@@ -1140,15 +1098,6 @@ textarea:focus {
     .our-users__reviews {
         grid-column: 2;
         grid-row: 3;
-    }
-
-    /* Product category page: Jackets */
-    .jackets__selection>* {
-        gap: 2em;
-    }
-
-    .product-trondheim {
-        margin-top: var(--margin-small)
     }
 
 
@@ -1439,11 +1388,6 @@ textarea:focus {
     .utility-nav__icon {
         padding: var(--padding-xsmall);
     }
-
-    /* Product category page: Jackets */
-    .jackets__selection>* {
-        gap: 2em;
-    }
 }
 
 @media (min-width: 1000px) {
@@ -1522,38 +1466,6 @@ textarea:focus {
         grid-row: 3;
     }
 
-
-
-    /* Product category page: Jackets */
-    .jackets__selection>* {
-        max-width: 1000px;
-        margin: auto;
-        gap: 3em;
-    }
-
-    .jackets__selection__devider {
-        margin: var(--margin-large) auto;
-    }
-
-    .main-content__jackets__header {
-        display: grid;
-        grid-template-columns: auto 1000px auto;
-        grid-template-rows: auto auto 1fr;
-        min-height: 50vh;
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 50%), url(../assets/images/people/man-with-orange-jacket-image-by-freepik-large.webp);
-    }
-
-    .main-content__jackets__heading,
-    .main-content__jackets__text {
-        padding: var(--padding-small);
-        padding-left: 0;
-        margin: 0;
-        grid-column: 2;
-    }
-
-    .product-trondheim {
-        margin-top: var(--margin-medium)
-    }
 
     /* Cart */
     .cart {

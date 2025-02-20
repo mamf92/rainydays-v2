@@ -1,19 +1,25 @@
 const API_URL = "https://v2.api.noroff.dev/rainy-days";
 
-async function fetchProductWithParam(url) {
-    const queryString = window.location.search;
-    const urlParam = new URLSearchParams(queryString);
-    const id = urlParam.get("id");
+async function fetchProducsInCart(url) {
     try {
-        const response = await fetch(`${url}/${id}`);
-        if (!response.ok) {
-            throw new Error(`Could not fetch product: ${id}, ${response.statusText}
-            `);
-        }
-        const json = await response.json();
-        const product = json.data;
+        let cart = sessionStorage.getItem("cart");
+        cart = cart ? JSON.parse(cart) : [];
 
-        displayProduct(product);
+        const products = [];
+
+        for (const item of cart) {
+            const response = await fetch(`${url}/${id}`);
+            if (!response.ok) {
+                throw new Error(`Could not fetch product: ${id}, ${response.statusText}
+            `);
+            }
+            const json = await response.json();
+            const product = json.data;
+
+            products.push(product);
+        }
+
+        displayProductsInCart(products);
     } catch (error) {
         console.error('Fetch error:', error.message);
     }
@@ -56,7 +62,7 @@ function createProductPage(product) {
     return productPage;
 }
 
-function displayProduct(product) {
+function displayProductsInCart(product) {
     const productPage = document.querySelector(".product-page");
 
     const productPageContent = createProductPage(product);
