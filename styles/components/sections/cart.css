@@ -1,0 +1,120 @@
+.cart {
+    display: grid;
+    margin: var(--margin-small);
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 0.5em;
+}
+
+/* .cart-content {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto) 1fr repeat(2, auto) 1fr repeat(2, auto);
+} */
+
+.cart-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.cart-content__heading {
+    font-size: var(--heading-small);
+    font-weight: bold;
+    margin: var(--margin-small) 0;
+}
+
+
+.cart-content__total-heading {
+    font-size: var(--heading-small);
+    font-weight: bold;
+    margin: var(--margin-small) 0;
+}
+
+.cart-content__total-price {
+    font-size: var(--heading-small);
+    font-weight: bold;
+    margin: var(--margin-small) 0;
+}
+
+/* Cart special offer */
+.cart__special-offer {
+    align-self: center;
+}
+
+.cart__special-offer__heading {
+    text-align: center;
+    margin-bottom: var(--margin-xsmall);
+}
+
+/* Cart CTA */
+.cart__cta {
+    align-self: center;
+}
+
+@media (min-width: 600px) {
+
+    /* Shopping cart 600px */
+    .cart {
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        column-gap: 2em;
+        margin: var(--margin-large);
+        grid-template-areas: 'cart-content special-offer'
+            'cart-content cart-cta';
+        padding-top: var(--padding-medium);
+        padding-bottom: var(--padding-large);
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+
+    .cart-devider1 {
+        display: none;
+    }
+
+    .cart__cart-content {
+        grid-area: cart-content;
+    }
+
+    .cart__cart-content__img1,
+    .cart__cart-content__img2 {
+        max-width: 100%;
+    }
+
+    .cart__special-offer {
+        padding: var(--padding-large);
+        grid-area: special-offer;
+    }
+
+    .cart__cta {
+        justify-self: center;
+        min-width: 20em;
+        grid-area: cart-cta;
+    }
+}
+
+@media (min-width: 1024px) {
+    .cart {
+        max-width: 1000px;
+        margin: var(--margin-large);
+    }
+
+    .cart__special-offer__heading {
+        font-size: var(--heading-medium);
+    }
+}
+
+@media (min-width: 1200px) {
+
+    /* Cart */
+    .cart {
+        max-width: 1000px;
+        margin: auto;
+        margin-top: var(--margin-large);
+    }
+
+    .cart__special-offer__heading {
+        font-size: var(--heading-medium);
+    }
+}

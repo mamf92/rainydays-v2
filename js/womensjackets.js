@@ -12,19 +12,22 @@ async function fetchProducts(url) {
         const json = await response.json();
         allProducts = json.data;
         console.log(allProducts);
-        allFemaleProducts = allProducts.filter(item => item.gender === "Female");
-        console.log(allFemaleProducts);
-        allFemaleProductsOnSale = allFemaleProducts.filter(item => item.onSale === true);
-        console.log(allFemaleProductsOnSale);
-        allFemaleFavoriteProducts = allFemaleProducts.filter(item => item.favorite === true);
-        console.log(allFemaleFavoriteProducts);
-        displayProducts(allFemaleProducts);
-        displayProductsOnSale(allFemaleProductsOnSale);
-        displayFavoriteProducts(allFemaleFavoriteProducts);
-
+        filterFemaleProducts();
     } catch (error) {
         console.error('Fetch error:', error.message);
     }
+}
+
+function filterFemaleProducts() {
+    allFemaleProducts = allProducts.filter(item => item.gender === "Female");
+    console.log(allFemaleProducts);
+    allFemaleProductsOnSale = allFemaleProducts.filter(item => item.onSale === true);
+    console.log(allFemaleProductsOnSale);
+    allFemaleFavoriteProducts = allFemaleProducts.filter(item => item.favorite === true);
+    console.log(allFemaleFavoriteProducts);
+    displayProducts(allFemaleProducts);
+    displayProductsOnSale(allFemaleProductsOnSale);
+    displayFavoriteProducts(allFemaleFavoriteProducts);
 }
 
 function createProductCardSmall(product) {
@@ -75,11 +78,21 @@ function displayFavoriteProducts(products) {
     const jacketsFavorites = document.querySelector(".jackets__favorites");
     jacketsFavorites.innerHTML = "";
 
+    if (products.length === 0) {
+        const noFavoritesHeading = document.querySelector(".jackets__heading--favorites");
+        noFavoritesHeading.remove();
+        const noFavorites = document.querySelector(".jackets__favorites");
+        noFavorites.remove();
+        const noDevider = document.querySelector(".between-favorites-all");
+        noDevider.remove();
+    }
 
-    products.forEach(product => {
-        const productCard = createProductCardSmall(product);
-        jacketsFavorites.appendChild(productCard);
-    })
+    else {
+        products.forEach(product => {
+            const productCard = createProductCardSmall(product);
+            jacketsFavorites.appendChild(productCard);
+        })
+    }
 }
 
 function displayProducts(products) {

@@ -1,5 +1,7 @@
 const API_URL = "https://v2.api.noroff.dev/rainy-days";
 
+let currentProduct = [];
+
 async function fetchProductWithParam(url) {
     const queryString = window.location.search;
     const urlParam = new URLSearchParams(queryString);
@@ -12,7 +14,7 @@ async function fetchProductWithParam(url) {
         }
         const json = await response.json();
         const product = json.data;
-
+        currentProduct = product;
         displayProduct(product);
     } catch (error) {
         console.error('Fetch error:', error.message);
@@ -64,23 +66,19 @@ function displayProduct(product) {
 }
 
 function addToCart() {
-    const queryString = window.location.search;
-    const urlParam = new URLSearchParams(queryString);
-    const id = urlParam.get("id");
-
     let cart = sessionStorage.getItem("cart");
     cart = cart ? JSON.parse(cart) : [];
-    const existingItem = cart.find(item => item.id === id);
+    const currentProductID = currentProduct.id;
+    const existingItem = cart.find(item => item.id === currentProductID);
     if (existingItem) {
         existingItem.quantity++;
     } else {
-        cart.push({ id, quantity: 1 });
+        currentProduct.quantity = 1;
+        cart.push(currentProduct);
     }
 
     sessionStorage.setItem("cart", JSON.stringify(cart));
     sessionStorage.getItem("cart");
-    console.log(cart);
-
     updateCartButtons();
 }
 

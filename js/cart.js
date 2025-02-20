@@ -1,79 +1,115 @@
-const API_URL = "https://v2.api.noroff.dev/rainy-days";
+// const API_URL = "https://v2.api.noroff.dev/rainy-days";
 
-async function fetchProducsInCart(url) {
-    try {
-        let cart = sessionStorage.getItem("cart");
-        cart = cart ? JSON.parse(cart) : [];
-
-        const products = [];
-
-        for (const item of cart) {
-            const response = await fetch(`${url}/${id}`);
-            if (!response.ok) {
-                throw new Error(`Could not fetch product: ${id}, ${response.statusText}
-            `);
-            }
-            const json = await response.json();
-            const product = json.data;
-
-            products.push(product);
-        }
-
-        displayProductsInCart(products);
-    } catch (error) {
-        console.error('Fetch error:', error.message);
+function getItemsInCart() {
+    let cart = sessionStorage.getItem("cart");
+    cart = cart ? JSON.parse(cart) : [];
+    if (cart.length === 0) {
+        displayEmptyCart();
+    } else {
+        const products = cart;
+        displayCart(products);
     }
 }
 
-fetchProductWithParam(API_URL)
+function createProductCardCart(product) {
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card-cart');
 
-function createProductPage(product) {
-    const productPage = document.createElement('section');
-    productPage.classList.add('product-page__product');
+    productCard.addEventListener("click", function () {
+        window.location.href = `../html/productpage.html?id=${product.id}`
+    });
 
-    const productImage = document.createElement('img');
-    productImage.classList.add('product-page__product__image');
-    productImage.src = product.image.url;
-    productImage.alt = product.image.alt;
+    const cardHeading = document.createElement('h2');
+    cardHeading.classList.add('product-card-cart__heading');
+    cardHeading.textContent = product.title;
 
-    const productHeading = document.createElement('h1');
-    productHeading.classList.add('product-page__product__h1');
-    productHeading.textContent = product.title;
+    const cardImage = document.createElement('img');
+    cardImage.classList.add('product-card-cart__image');
+    cardImage.src = product.image.url;
+    cardImage.alt = product.image.alt;
 
-    const productText = document.createElement('p');
-    productText.classList.add('product-page__product__p');
-    productText.textContent = product.description;
+    const cardQuantity = document.createElement('p');
+    cardQuantity.classList.add('product-card-cart__quantity');
+    cardQuantity.textContent = `x ${product.quantity
+        }`;
 
-    const productPrice = document.createElement('h2');
-    productPrice.classList.add('product-page__product__price')
-    productPrice.textContent = `$${product.price}`;
+    const cardPrice = document.createElement('p');
+    cardPrice.classList.add('product-card-cart__price')
+    cardPrice.textContent = `$${product.price * product.quantity}`;
 
-    const productAddToCartLink = document.createElement('a');
-    productAddToCartLink.classList.add("product-page__product__cta", "cta-btn", "cta-btn--green", "cta-btn--large")
-    productAddToCartLink.textContent = "Add jacket to cart";
-    productAddToCartLink.addEventListener("click", addToCart);
+    productCard.appendChild(cardImage);
+    productCard.appendChild(cardHeading);
+    productCard.appendChild(cardQuantity);
+    productCard.appendChild(cardPrice);
 
-    productPage.appendChild(productImage);
-    productPage.appendChild(productHeading);
-    productPage.appendChild(productText);
-    productPage.appendChild(productPrice);
-    productPage.appendChild(productAddToCartLink);
-
-    return productPage;
+    return productCard;
 }
 
-function displayProductsInCart(product) {
-    const productPage = document.querySelector(".product-page");
+function displayCart(product) {
+    const cart = document.querySelector(".cart");
+    const cartSection = document.createElement('section');
+    cartSection.classList.add('cart-content');
 
-    const productPageContent = createProductPage(product);
-    productPage.appendChild(productPageContent);
+    const cartHeading = document.createElement('h1');
+    cartHeading.classList.add('cart-content__heading');
+    cartHeading.textContent = "Your cart:";
+
+
+    const totalPriceHeading = document.createElement('h2');
+    totalPriceHeading.classList.add('cart-content__total-heading');
+    totalPriceHeading.textContent = "Total price: ";
+
+    const totalPrice = document.createElement('h2');
+    totalPrice.classList.add('cart-content__total-price');
+    totalPrice.textContent = `$${calculateTotalPrice(product)}`;
+
+    cart.prepend(cartSection);
+    cartSection.appendChild(cartHeading);
+
+    product.forEach(product => {
+        const productCard = createProductCardCart(product);
+        cartSection.appendChild(productCard);
+    });
+    cartSection.appendChild(totalPriceHeading);
+    cartSection.appendChild(totalPrice);
+
+    return cartSection;
 }
 
-function addToCart() {
-    const queryString = window.location.search;
-    const urlParam = new URLSearchParams(queryString);
-    const id = urlParam.get("id");
+function calculateTotalPrice(products) {
+    let cart = sessionStorage.getItem("cart");
+    cart = cart ? JSON.parse(cart) : [];
 
+    let totalPrice = 0;
+    products.forEach(product => {
+        totalPrice += product.price * product.quantity;
+    });
+
+    const formattedPrice = totalPrice.toFixed(2);
+    return formattedPrice;
+}
+
+function displayEmptyCart() {
+    emptyCart = document.querySelector(".cart");
+    emptyCartSection = document.createElement('section');
+    emptyCartSection.classList.add('cart-content');
+
+    noBuyBtn = document.querySelector(".cart__cta.buy-btn");
+    noBuyBtn.remove();
+
+    const cartHeading = document.createElement('h1');
+    cartHeading.classList.add('cart-content__heading');
+    cartHeading.textContent = "Your cart is empty 😢";
+
+
+    cart.prepend(cartSection);
+    cartSection.appendChild(cartHeading);
+
+    return cartSection;
+}
+
+
+function buyItems() {
     let cart = sessionStorage.getItem("cart");
     cart = cart ? JSON.parse(cart) : [];
     const existingItem = cart.find(item => item.id === id);
@@ -86,20 +122,6 @@ function addToCart() {
     sessionStorage.setItem("cart", JSON.stringify(cart));
     sessionStorage.getItem("cart");
     console.log(cart);
-
-    updateCartButtons();
 }
 
-function updateCartButtons() {
-    productAddToCartLink = document.querySelector(".product-page__product__cta");
-    productAddToCartLink.removeEventListener("click", addToCart);
-    productAddToCartLink.textContent = "Added to cart";
-    productAddToCartLink.style.backgroundColor = "grey";
-    productAddToCartLink.style.boxShadow = "none";
-    const goToCartButton = document.createElement('a');
-    goToCartButton.classList.add("product-page__product__goto-cart", "cta-btn", "cta-btn--green", "cta-btn--large")
-    goToCartButton.textContent = "Go to cart";
-    goToCartButton.href = "../html/cart.html";
-    productPage = document.querySelector(".product-page__product");
-    productPage.appendChild(goToCartButton);
-}
+getItemsInCart();
