@@ -21,7 +21,7 @@ function createProductCardSmall(product) {
     productCard.classList.add('product-card', 'product-card--small');
 
     productCard.addEventListener("click", function () {
-        let basePath = window.location.pathname.includes("rainydays-v2")
+        let basePath = window.location.hostname === "mamf92.github.io"
             ? "/rainydays-v2"
             : "";
         window.location.href = `${basePath}/html/productpage.html?id=${product.id}`;
