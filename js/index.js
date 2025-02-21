@@ -21,7 +21,10 @@ function createProductCardSmall(product) {
     productCard.classList.add('product-card', 'product-card--small');
 
     productCard.addEventListener("click", function () {
-        window.location.href = `${window.location.origin}/html/productpage.html?id=${product.id}`
+        let basePath = window.location.pathname.includes("rainydays-v2")
+            ? "/rainydays-v2"
+            : "";
+        window.location.href = `${basePath}/html/productpage.html?id=${product.id}`;
     });
 
     const cardImage = document.createElement('img');
