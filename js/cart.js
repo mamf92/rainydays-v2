@@ -1,5 +1,3 @@
-// const API_URL = "https://v2.api.noroff.dev/rainy-days";
-
 function getItemsInCart() {
     let cart = sessionStorage.getItem("cart");
     cart = cart ? JSON.parse(cart) : [];
@@ -20,16 +18,22 @@ function createProductCardCart(product) {
     cardHeading.classList.add('product-card-cart__heading');
     cardHeading.textContent = product.title;
     cardHeading.addEventListener("click", function () {
-        window.location.href = `../html/productpage.html?id=${product.id}`
-    })
+        let basePath = window.location.hostname === "mamf92.github.io"
+            ? "/rainydays-v2"
+            : "";
+        window.location.href = `${basePath}/html/productpage.html?id=${product.id}`;
+    });
 
     const cardImage = document.createElement('img');
     cardImage.classList.add('product-card-cart__image');
     cardImage.src = product.image.url;
     cardImage.alt = product.image.alt;
     cardImage.addEventListener("click", function () {
-        window.location.href = `../html/productpage.html?id=${product.id}`
-    })
+        let basePath = window.location.hostname === "mamf92.github.io"
+            ? "/rainydays-v2"
+            : "";
+        window.location.href = `${basePath}/html/productpage.html?id=${product.id}`;
+    });
 
     const cardQuantity = document.createElement('p');
     cardQuantity.classList.add('product-card-cart__quantity');
@@ -40,9 +44,15 @@ function createProductCardCart(product) {
     cardPrice.classList.add('product-card-cart__price')
     cardPrice.textContent = `$${product.price * product.quantity}`;
 
+    const removeBtn = document.createElement('button');
+    removeBtn.classList.add("remove-item-btn");
+    removeBtn.textContent = "Remove";
+    removeBtn.addEventListener("click", function () { removeItemFromCart(product.id); });
+
     productCard.appendChild(cardImage);
     productCard.appendChild(cardHeading);
     productCard.appendChild(cardQuantity);
+    productCard.appendChild(removeBtn);
     productCard.appendChild(cardPrice);
 
     return productCard;
@@ -57,7 +67,6 @@ function displayCart(product) {
     cartHeading.classList.add('cart-content__heading');
     cartHeading.textContent = "Your cart:";
 
-
     const totalPriceHeading = document.createElement('h2');
     totalPriceHeading.classList.add('cart-content__total-heading');
     totalPriceHeading.textContent = "Total price: ";
@@ -65,6 +74,9 @@ function displayCart(product) {
     const totalPrice = document.createElement('h2');
     totalPrice.classList.add('cart-content__total-price');
     totalPrice.textContent = `$${calculateTotalPrice(product)}`;
+
+    const buyBtnClick = document.querySelector(".buy-btn");
+    buyBtnClick.addEventListener("click", buyItems);
 
     cart.prepend(cartSection);
     cartSection.appendChild(cartHeading);
@@ -97,34 +109,48 @@ function displayEmptyCart() {
     emptyCartSection = document.createElement('section');
     emptyCartSection.classList.add('cart-content');
 
-    noBuyBtn = document.querySelector(".cart__cta.buy-btn");
+    noBuyBtn = document.querySelector(".buy-btn");
     noBuyBtn.remove();
 
     const cartHeading = document.createElement('h1');
     cartHeading.classList.add('cart-content__heading');
-    cartHeading.textContent = "Your cart is empty 😢";
+    cartHeading.textContent = "Your cart is empty 👀";
+
+    const emptyCartCTA = document.createElement('p');
+    emptyCartCTA.classList.add('cart-content__cta');
+    emptyCartCTA.textContent = "Check out our one day special offer!";
 
 
-    cart.prepend(cartSection);
-    cartSection.appendChild(cartHeading);
+    emptyCart.prepend(emptyCartSection);
+    emptyCartSection.appendChild(cartHeading);
+    emptyCartSection.appendChild(emptyCartCTA);
 
-    return cartSection;
+    return emptyCartSection;
+}
+
+function removeItemFromCart(id) {
+    let cart = sessionStorage.getItem("cart");
+    cart = cart ? JSON.parse(cart) : [];
+    const currentProductID = id;
+    const existingItem = cart.find(item => item.id === currentProductID);
+    if (existingItem) {
+        existingItem.quantity--;
+        if (existingItem.quantity === 0) {
+            cart = cart.filter(item => item.id !== currentProductID);
+        }
+    }
+
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+    const cartSection = document.querySelector('.cart-content');
+    cartSection.remove();
+    getItemsInCart();
 }
 
 
 function buyItems() {
-    let cart = sessionStorage.getItem("cart");
-    cart = cart ? JSON.parse(cart) : [];
-    const existingItem = cart.find(item => item.id === id);
-    if (existingItem) {
-        existingItem.quantity++;
-    } else {
-        cart.push({ id, quantity: 1 });
-    }
-
-    sessionStorage.setItem("cart", JSON.stringify(cart));
-    sessionStorage.getItem("cart");
-    console.log(cart);
+    let purchasedItems = sessionStorage.setItem("purchasedItems", JSON.stringify(sessionStorage.getItem("cart")));
+    sessionStorage.removeItem("cart");
+    console.log("purchasedItems", purchasedItems);
 }
 
 getItemsInCart();

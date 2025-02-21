@@ -8,8 +8,6 @@ async function fetchProducts(url) {
         if (!response.ok) { throw new Error('Could not fetch products ' + response.statusText); }
         const json = await response.json();
         allProducts = json.data;
-        console.log(allProducts);
-
         displayProducts(allProducts);
     } catch (error) {
         console.error('Fetch error:', error.message);
