@@ -14,19 +14,22 @@ function getItemsInCart() {
 function createProductCardCart(product) {
     const productCard = document.createElement('div');
     productCard.classList.add('product-card-cart');
-
-    productCard.addEventListener("click", function () {
-        window.location.href = `../html/productpage.html?id=${product.id}`
-    });
+    ;
 
     const cardHeading = document.createElement('h2');
     cardHeading.classList.add('product-card-cart__heading');
     cardHeading.textContent = product.title;
+    cardHeading.addEventListener("click", function () {
+        window.location.href = `../html/productpage.html?id=${product.id}`
+    })
 
     const cardImage = document.createElement('img');
     cardImage.classList.add('product-card-cart__image');
     cardImage.src = product.image.url;
     cardImage.alt = product.image.alt;
+    cardImage.addEventListener("click", function () {
+        window.location.href = `../html/productpage.html?id=${product.id}`
+    })
 
     const cardQuantity = document.createElement('p');
     cardQuantity.classList.add('product-card-cart__quantity');
