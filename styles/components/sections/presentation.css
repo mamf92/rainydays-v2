@@ -17,7 +17,9 @@
 
 .cta-btn.presentation__sort-button {
     font-size: var(--body-small);
-    padding: var(--padding-small);
+    padding: var(--padding-xsmall);
+    margin: var(--margin-small);
+    min-width: 5em;
     align-items: center;
 }
 
@@ -31,6 +33,14 @@
     .presentation__heading {
         grid-column: 1 / -1;
         text-align: left;
+    }
+
+    .cta-btn.presentation__sort-button {
+        font-size: var(--body-small);
+        padding: var(--padding-medium);
+        margin: var(--margin-medium);
+        min-width: 7em;
+        align-items: center;
     }
 }
 

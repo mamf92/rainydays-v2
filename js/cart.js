@@ -148,9 +148,11 @@ function removeItemFromCart(id) {
 
 
 function buyItems() {
-    let purchasedItems = sessionStorage.setItem("purchasedItems", JSON.stringify(sessionStorage.getItem("cart")));
+    let cart = sessionStorage.getItem("cart");
+    cart = cart ? JSON.parse(cart) : [];
+
+    sessionStorage.setItem("purchasedItems", JSON.stringify(cart));
     sessionStorage.removeItem("cart");
-    console.log("purchasedItems", purchasedItems);
 }
 
 getItemsInCart();
