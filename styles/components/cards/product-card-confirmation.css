@@ -27,18 +27,6 @@
 .product-card-confirmation__price {
     font-size: var(--heading-xsmall);
     font-weight: bold;
-    color: #0077cc;
+    color: var(--color-darkgreen);
     text-align: left;
 }
-
-/* @media (min-width: 426px) {
-    .product-card-confirmation {
-        max-width: 45vw;
-    }
-}
-
-@media (min-width: 768px) {
-    .product-card-confirmation {
-        max-width: 45vw;
-    }
-} */

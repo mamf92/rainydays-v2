@@ -6,12 +6,6 @@
     gap: 0.5em;
 }
 
-/* .cart-content {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-template-rows: repeat(2, auto) 1fr repeat(2, auto) 1fr repeat(2, auto);
-} */
-
 .cart-content {
     display: flex;
     flex-wrap: wrap;
@@ -23,7 +17,6 @@
     font-weight: bold;
     margin: var(--margin-small) 0;
 }
-
 
 .cart-content__total-heading {
     font-size: var(--heading-small);
@@ -73,7 +66,7 @@
         display: none;
     }
 
-    .cart__cart-content {
+    .cart-content {
         grid-area: cart-content;
     }
 

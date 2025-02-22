@@ -37,7 +37,7 @@ function createProductCardCart(product) {
 
     const cardQuantity = document.createElement('p');
     cardQuantity.classList.add('product-card-cart__quantity');
-    cardQuantity.textContent = `x ${product.quantity
+    cardQuantity.textContent = `x${product.quantity
         }`;
 
     const cardPrice = document.createElement('p');
@@ -52,8 +52,8 @@ function createProductCardCart(product) {
     productCard.appendChild(cardImage);
     productCard.appendChild(cardHeading);
     productCard.appendChild(cardQuantity);
-    productCard.appendChild(removeBtn);
     productCard.appendChild(cardPrice);
+    productCard.appendChild(removeBtn);
 
     return productCard;
 }
