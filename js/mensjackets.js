@@ -6,6 +6,8 @@ let allMaleProductsOnSale = [];
 let allMaleFavoriteProducts = [];
 
 async function fetchProducts(url) {
+    const loader = document.querySelector(".loader");
+    loader.style.display = "block";
     try {
         const response = await fetch(url);
         if (!response.ok) { throw new Error('Could not fetch products ' + response.statusText); }
@@ -14,6 +16,8 @@ async function fetchProducts(url) {
         filterMaleProducts();
     } catch (error) {
         console.error('Fetch error:', error.message);
+    } finally {
+        loader.style.display = "none";
     }
 }
 

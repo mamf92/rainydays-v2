@@ -61,7 +61,7 @@ function displayPurchasedItems(product) {
 
     const totalOrderPriceHeading = document.createElement('h2');
     totalOrderPriceHeading.classList.add('confirmation__total-order-price-heading');
-    totalOrderPriceHeading.textContent = "Total order price: ";
+    totalOrderPriceHeading.textContent = "Total order price w/discount: ";
 
     const totalOrderPrice = document.createElement('h2');
     totalOrderPrice.classList.add('confirmation__total-order-price');
@@ -88,7 +88,7 @@ function calculateTotalPrice(products) {
     let totalPrice = 0;
 
     products.forEach(product => {
-        totalPrice += product.price * product.quantity;
+        totalPrice += product.price * product.quantity * 0.8;
     });
 
     const formattedPrice = totalPrice.toFixed(2);

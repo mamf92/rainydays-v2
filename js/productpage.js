@@ -3,6 +3,8 @@ const API_URL = "https://v2.api.noroff.dev/rainy-days";
 let currentProduct = [];
 
 async function fetchProductWithParam(url) {
+    const loader = document.querySelector(".loader");
+    loader.style.display = "block";
     const queryString = window.location.search;
     const urlParam = new URLSearchParams(queryString);
     const id = urlParam.get("id");
@@ -18,6 +20,8 @@ async function fetchProductWithParam(url) {
         displayProduct(product);
     } catch (error) {
         console.error('Fetch error:', error.message);
+    } finally {
+        loader.style.display = "none";
     }
 }
 
