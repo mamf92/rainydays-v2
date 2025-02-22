@@ -3,6 +3,9 @@ const API_URL = "https://v2.api.noroff.dev/rainy-days";
 let allProducts = [];
 
 async function fetchProducts(url) {
+    const loader = document.querySelector(".loader");
+    loader.style.display = "block";
+
     try {
         const response = await fetch(url);
         if (!response.ok) { throw new Error('Could not fetch products ' + response.statusText); }
@@ -11,6 +14,8 @@ async function fetchProducts(url) {
         displayProducts(allProducts);
     } catch (error) {
         console.error('Fetch error:', error.message);
+    } finally {
+        loader.style.display = "none";
     }
 }
 
@@ -85,7 +90,6 @@ function displayProducts(products) {
 
 function sortByPrice() {
     const sortedProducts = allProducts.sort((a, b) => a.price - b.price);
-    console.log(sortedProducts);
     displayProducts(sortedProducts);
 }
 

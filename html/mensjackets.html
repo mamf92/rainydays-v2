@@ -21,6 +21,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16.png">
         <link rel="manifest" href="../assets/images/favicon/site.webmanifest">
         <script src="https://kit.fontawesome.com/f119ec2cf5.js" crossorigin="anonymous"></script>
+        <script src="../js/mensjackets.js" defer></script>
 </head>
 
 <body>
@@ -33,7 +34,7 @@
                 <label for="menu-checkbox" class="burger-btn"><img src="../assets/buttons/burger-btn_default.png"
                                 alt="Menu button" class="burger-btn__image"></label>
                 <nav class="nav">
-                        <a href="../html/notavailableyet.html">Shop women's</a>
+                        <a href="../html/womensjackets.html">Shop women's</a>
                         <a href="../html/mensjackets.html" class="current-page">Shop men's</a>
                         <a href="../html/about.html">About us</a>
                         <a href="../html/contact.html">Contact us</a>
@@ -56,79 +57,27 @@
         <nav class="breadcrumbs">
                 <a href="../index.html" class="breadcrumbs__item breadcrumbs__link">Home</a>
                 <p class="breadcrumbs__item">></p>
-                <a href="#" class="breadcrumbs__item current-page">Jackets</a>
+                <a href="#" class="breadcrumbs__item current-page">Women's Jackets</a>
         </nav>
         <main class="main-content__jackets" id="main-content">
                 <section class="main-content__jackets__header">
-                        <h1 class="main-content__jackets__heading">Jackets</h1>
+                        <h1 class="main-content__jackets__heading">Men's Jackets</h1>
                         <p class="main-content__jackets__text">Our jackets are 100% water
                                 proof but still breathable
                                 letting you
                                 enjoy your
                                 active
-                                lifestyle. Choose between
-                                our light raincoats, Bergen, to our warmer options, Tromsø. </p>
+                                lifestyle. </p>
                 </section>
                 <section class="jackets__selection">
-                        <h2>Bergen</h2>
-                        <div class="jackets__selection__product">
-                                <a href="bergen.html" aria-label="View Bergen jacket in dark green"><img
-                                                src="../assets/images/producs/Bergen-DarkGreen.jpg"
-                                                class="jackets__selection__product__image"
-                                                alt="Bergen jacket dark green"></a>
-                                <a href="bergen.html" aria-label="View Bergen jacket in in green"><img
-                                                src="../assets/images/producs/Bergen-Green.jpg"
-                                                class="jackets__selection__product__image"
-                                                alt="Bergen jacket green"></a>
-                                <a href="bergen.html" aria-label="View Bergen jacket in in blue"><img
-                                                src="../assets/images/producs/Bergen-Blue.jpg"
-                                                class="jackets__selection__product__image" alt="Bergen jacket blue"></a>
-                                <a href="bergen.html" aria-label="View Bergen jacket in in dark blue"><img
-                                                src="../assets/images/producs/Bergen-DarkBlue.jpg"
-                                                class="jackets__selection__product__image"
-                                                alt="Bergen jacket dark blue"></a>
-                        </div>
-                        <div class="section-divider jackets__selection__devider"></div>
-                        <h2>Trondheim</h2>
-                        <div class="jackets__selection__product product-trondheim">
-                                <a href="#" aria-label="View Trondheim jacket in dark green"><img
-                                                src="../assets/images/producs/Trondheim-DarkGreen.jpg"
-                                                class="jackets__selection__product__image"
-                                                alt="Trondheim jacket in dark green"></a>
-                                <a href="#" aria-label="View Trondheim jacket in green"><img
-                                                src="../assets/images/producs/Trondheim-Green.jpg"
-                                                class="jackets__selection__product__image"
-                                                alt="Trondheim jacket green"></a>
-                                <a href="#" aria-label="View Trondheim jacket in blue"><img
-                                                src="../assets/images/producs/Trondheim-Blue.jpg"
-                                                class="jackets__selection__product__image"
-                                                alt="Trondheim jacket blue"></a>
-                                <a href="#" aria-label="View Trondheim jacket in dark blue"><img
-                                                src="../assets/images/producs/Trondheim-DarkBlue.jpg"
-                                                class="jackets__selection__product__image"
-                                                alt="Trondheim jacket in dark blue"></a>
-                        </div>
-                        <div class="section-divider jackets__selection__devider"></div>
-
-                        <h2>Tromsø</h2>
-                        <div class="jackets__selection__product">
-                                <a href="#" aria-label="View Tromsø jacket in dark green"><img
-                                                src="../assets/images/producs/Tromso-DarkGreen.jpg"
-                                                class="jackets__selection__product__image"
-                                                alt="Tromsø jacket dark green"></a>
-                                <a href="#" aria-label="View Tromsø jacket in green"><img
-                                                src="../assets/images/producs/Tromso-Green.jpg"
-                                                class="jackets__selection__product__image"
-                                                alt="Tromsø jacket green"></a>
-                                <a href="#" aria-label="View Tromsø jacket in blue"><img
-                                                src="../assets/images/producs/Tromso-Blue.jpg"
-                                                class="jackets__selection__product__image" alt="Tromsø jacket blue"></a>
-                                <a href="#" aria-label="View Tromsø jacket in dark blue"><img
-                                                src="../assets/images/producs/Tromso-DarkBlue.jpg"
-                                                class="jackets__selection__product__image"
-                                                alt="Tromsø jacket dark blue"></a>
-                        </div>
-                        <div class="section-divider jackets__selection__devider"></div>
+                        <h2 class="jackets__heading--onsale">On sale!</h2>
+                        <div class="jackets__onsale jackets__selection__product"></div>
+                        <div class="jackets__selection-devider between-onsale-favorites"></div>
+                        <h2 class="jackets__heading--favorites">Loved by customers</h2>
+                        <div class="jackets__favorites jackets__selection__product"></div>
+                        <div class="jackets__selection-devider between-favorites-all"></div>
+                        <h2 class="jackets__heading--alljackets">All jackets</h2>
+                        <div class="jackets__all jackets__selection__product">
                 </section>
 
         </main>

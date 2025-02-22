@@ -1,34 +1,29 @@
 const API_URL = "https://v2.api.noroff.dev/rainy-days";
 
 let allProducts = [];
-let allFemaleProducts = [];
-let allFemaleProductsOnSale = [];
-let allFemaleFavoriteProducts = [];
+let allMaleProducts = [];
+let allMaleProductsOnSale = [];
+let allMaleFavoriteProducts = [];
 
 async function fetchProducts(url) {
-    const loader = document.querySelector(".loader");
-    loader.style.display = "block";
-
     try {
         const response = await fetch(url);
         if (!response.ok) { throw new Error('Could not fetch products ' + response.statusText); }
         const json = await response.json();
         allProducts = json.data;
-        filterFemaleProducts();
+        filterMaleProducts();
     } catch (error) {
         console.error('Fetch error:', error.message);
-    } finally {
-        loader.style.display = "none";
     }
 }
 
-function filterFemaleProducts() {
-    allFemaleProducts = allProducts.filter(item => item.gender === "Female");
-    allFemaleProductsOnSale = allFemaleProducts.filter(item => item.onSale === true);
-    allFemaleFavoriteProducts = allFemaleProducts.filter(item => item.favorite === true);
-    displayProducts(allFemaleProducts);
-    displayProductsOnSale(allFemaleProductsOnSale);
-    displayFavoriteProducts(allFemaleFavoriteProducts);
+function filterMaleProducts() {
+    allMaleProducts = allProducts.filter(item => item.gender === "Male");
+    allMaleProductsOnSale = allMaleProducts.filter(item => item.onSale === true);
+    allMaleFavoriteProducts = allMaleProducts.filter(item => item.favorite === true);
+    displayProducts(allMaleProducts);
+    displayProductsOnSale(allMaleProductsOnSale);
+    displayFavoriteProducts(allMaleFavoriteProducts);
 }
 
 function createProductCardSmall(product) {
@@ -118,7 +113,7 @@ function displayProducts(products) {
 }
 
 function sortByPrice() {
-    const sortedProducts = allFemaleProducts.sort((a, b) => a.price - b.price);
+    const sortedProducts = allMaleProducts.sort((a, b) => a.price - b.price);
     displayProducts(sortedProducts);
 }
 
