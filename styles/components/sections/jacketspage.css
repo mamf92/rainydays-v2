@@ -8,6 +8,10 @@
     background-position: 60% 10%;
 }
 
+.main-content__jackets__header--womens {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 50%), url(../../../assets/images/people/woman-with-orange-jacket.webp);
+}
+
 .main-content__jackets__heading {
     color: var(--color-white);
     padding-left: var(--padding-small);
@@ -78,6 +82,10 @@
         grid-template-rows: auto auto 1fr;
         min-height: 50vh;
         background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 50%), url(../../../assets/images/people/man-with-orange-jacket-image-by-freepik-large.webp);
+    }
+
+    .main-content__jackets__header--womens {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 50%), url(../../../assets/images/people/woman-with-orange-jacket.webp);
     }
 
     .main-content__jackets__heading,

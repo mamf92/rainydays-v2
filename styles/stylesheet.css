@@ -488,7 +488,7 @@ footer {
 }
 
 .about__header {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 50%), url(../assets/images/backgrounds/image-by-wirestock-on-freepik-couple-walking.jpg);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 50%), url(../assets/images/backgrounds/image-by-wirestock-on-freepik-couple-walking.webp);
     background-size: auto 100vh;
     min-height: 50vh;
     background-size: cover;
@@ -518,7 +518,7 @@ footer {
     grid-template-rows: auto 1fr;
     grid-column: 1 /span 2;
     grid-row: 1;
-    background-image: url(../assets/images/backgrounds/image-by-standret-on-freepik-forest-sunset-medium.jpg);
+    background-image: url(../assets/images/backgrounds/image-by-standret-on-freepik-forest-sunset-medium.webp);
     background-size: auto 100vh;
     min-height: 60vh;
     background-size: cover;
