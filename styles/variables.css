@@ -31,6 +31,7 @@
     --body-xsmall: 0.5em;
 
     /* Spacing */
+    --padding-xlarge: 3em;
     --padding-large: 2em;
     --padding-medium: 1em;
     --padding-small: 0.5em;

@@ -1,0 +1,115 @@
+footer {
+    display: grid;
+    grid-area: footer;
+    width: calc(100% - (2 * var(--padding-large)));
+
+    grid-template-rows: repeat(6, auto);
+    grid-template-areas:
+        'some-heading'
+        'some'
+        'contact-info-heading'
+        'contact-info'
+        'logo'
+        'copyright';
+    gap: 1.5rem;
+    padding: var(--padding-xlarge) 0;
+    margin: var(--margin-large) auto;
+    border-top: solid 1px var(--color-grey);
+
+    color: var(--color-grey);
+}
+
+.footer__some__heading {
+    grid-area: some-heading;
+    color: var(--color-grey);
+}
+
+.footer__some {
+    grid-area: some;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer__contact-info__heading {
+    grid-area: contact-info-heading;
+}
+
+.footer__contact-info {
+    grid-area: contact-info;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer__some a,
+.footer__contact-info a {
+    color: var(--color-grey);
+}
+
+.footer__contact-info p {
+    display: none;
+    font-size: var(--body-medium);
+}
+
+.footer__logo {
+    grid-area: logo;
+    display: flex;
+    justify-content: center;
+    padding: var(--padding-small) 0;
+}
+
+.footer__logo__image {
+    max-width: 6.25rem;
+}
+
+.footer__copyright {
+    grid-area: copyright;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.footer__copyright p {
+    font-size: var(--body-small);
+}
+
+.fa-brands,
+.fa-solid {
+    font-size: 2em;
+}
+
+.fa-brands:hover,
+.fa-solid:hover {
+    color: var(--color-darkblue);
+    transform: scale(1.05);
+}
+
+.fa-regular {
+    font-size: 0.5em;
+}
+
+@media (min-width: 600px) {
+    footer {
+        max-width: 1000px;
+        grid-template-columns: 1.5fr repeat(2, 2fr);
+        grid-template-rows: repeat(3, auto);
+        align-items: center;
+        grid-template-areas:
+            'logo some-heading contact-info-heading'
+            'logo some contact-info'
+            'copyright copyright copyright';
+        margin: var(--margin-large) auto;
+    }
+
+    .footer__some,
+    .footer__contact-info {
+        justify-content: left;
+        gap: 2rem;
+    }
+
+    .footer__copyright {
+        border-top: solid 1px var(--color-grey);
+        padding-top: var(--padding-large);
+        margin-top: 1.5rem;
+    }
+}

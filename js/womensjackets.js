@@ -6,6 +6,9 @@ let allFemaleProductsOnSale = [];
 let allFemaleFavoriteProducts = [];
 
 async function fetchProducts(url) {
+    const loaderWrapper = document.querySelector(".loader-wrapper");
+    loaderWrapper.style.display = "flex";
+
     const loader = document.querySelector(".loader");
     loader.style.display = "block";
 
@@ -19,6 +22,8 @@ async function fetchProducts(url) {
         console.error('Fetch error:', error.message);
     } finally {
         loader.style.display = "none";
+        loaderWrapper.style.display = "none";
+
     }
 }
 
